@@ -14,13 +14,15 @@ developing a web game for the NASA Psyche mission website: https://psyche-capsto
 
 
 ## Technologies Used:  
-Unity Hub, Editor, WebGL: https://unity.com/download
+Development - Unity Hub, Editor, WebGL: https://unity.com/download  
+Version Control - GitHub Desktop: https://desktop.github.com/  
+Project Management - https://tree.taiga.io/project/jlavi98-psyche-capstone-12n-web-game/issues  
 
 ## Project setup:  
 1. Clone the respository to your desired folder
 2. Open the project folder in Unity Editor.
 
-## Buildig the project:  
+## Building the project:  
 1. Go to File > Build Settings.
 2. Choose WebGL as the platform and click "Switch Platform" if needed.
 3. Configure any other settings as needed and click "Build."
