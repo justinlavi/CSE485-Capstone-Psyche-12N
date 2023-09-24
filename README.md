@@ -1,6 +1,6 @@
 # CSE485-Capstone-Psyche-12N
 
-## Project Members:  
+## Project Members: 
 Justin Lavi  
 Adrian Mena  
 Joseph Dunagan  
@@ -12,5 +12,18 @@ developing a web game for the NASA Psyche mission website: https://psyche-capsto
 
 ## Game Description:  
 
+
+## Technologies Used:  
+Unity Hub, Editor, WebGL: https://unity.com/download
+
+## Project setup:  
+1. Clone the respository to your desired folder
+2. Open the project folder in Unity Editor.
+
+## Buildig the project:  
+1. Go to File > Build Settings.
+2. Choose WebGL as the platform and click "Switch Platform" if needed.
+3. Configure any other settings as needed and click "Build."
+4. When prompted for a build location, select the "Build" folder. (If you don't see this folder in the project directory: Right Click > New > Folder. Call it "Build". Select this location.)
 
 
