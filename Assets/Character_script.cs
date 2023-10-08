@@ -3,29 +3,25 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public float jumpForce = 7.0f;
-
+    [SerializeField] private Animator animator;
     private bool isFacingRight = true;
     private bool isGrounded = false;
     private Rigidbody2D rb;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0.0f);
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Magnitude", movement.magnitude);
 
-        // Flip the character's sprite based on direction
-        if (horizontalInput > 0 && !isFacingRight)
-        {
-            Flip();
-        }
-        else if (horizontalInput < 0 && isFacingRight)
-        {
-            Flip();
-        }
+        float horizontalInput = Input.GetAxis("Horizontal");
 
         // Jumping
         if (isGrounded && Input.GetButtonDown("Jump"))
@@ -34,14 +30,8 @@ public class Character : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             isGrounded = false; 
         }
-    }
-
-    private void Flip()
-    {
-        isFacingRight = !isFacingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        bool flipped = movement.x > 0;
+        this.transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
     }
 
 private void OnCollisionEnter2D(Collision2D collision)
