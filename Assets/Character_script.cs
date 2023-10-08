@@ -30,8 +30,21 @@ public class Character : MonoBehaviour
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
             isGrounded = false; 
         }
-        bool flipped = movement.x > 0;
-        this.transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
+        if (movement.x != 0)
+        {
+            bool flipped = movement.x > 0; 
+            isFacingRight = flipped;
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, flipped ? 180f : 0f, 0f));
+        }
+        if (movement.x == 0 && movement.magnitude == 0 && isFacingRight) 
+        { 
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f)); 
+            animator.SetFloat("Direction", 1); }
+        else if (movement.x == 0 && movement.magnitude == 0 && !isFacingRight) 
+        {
+            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+            animator.SetFloat("Direction", -1); 
+        }
     }
 
 private void OnCollisionEnter2D(Collision2D collision)
