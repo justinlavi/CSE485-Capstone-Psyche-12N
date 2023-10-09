@@ -33,4 +33,5 @@ ExportedObj/
 # ---------------------------------------------
 # Editor(s)
 *.vscode
+*.vsconfig
 
