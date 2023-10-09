@@ -6,6 +6,7 @@ public class Asteroid_script : MonoBehaviour
 {
     public float rotationSpeed = 20.0f;
     public Transform spaceBackground; // space background
+    public Transform resourceOverlay;
     public float backgroundRotationFactor = 0.5f; // half the speed of the planet
     private bool characterOnAsteroid = false;
 
@@ -32,6 +33,9 @@ public class Asteroid_script : MonoBehaviour
             // Rotate the asteroid based on player input
             float horizontalInput = Input.GetAxis("Horizontal");
             transform.Rotate(0, 0, horizontalInput * rotationSpeed * Time.deltaTime);
+
+            //Rotate resource with planet
+            resourceOverlay.Rotate(0, 0, horizontalInput * rotationSpeed * Time.deltaTime);
 
             // Rotate the background with parallax effect
             spaceBackground.Rotate(0, 0, horizontalInput * rotationSpeed * backgroundRotationFactor * Time.deltaTime);
